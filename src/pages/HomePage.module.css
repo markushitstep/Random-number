@@ -1,0 +1,14 @@
+
+.homePage{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homePage .homePage__title{
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  font-weight: 400;
+}

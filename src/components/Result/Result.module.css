@@ -1,0 +1,104 @@
+
+.result{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RESULT-MATCHES */
+
+.result .result__matches{
+  animation: glitch 1s linear infinite;
+  font-size: 25px;
+}
+
+.result .result__matches:before,
+.result .result__matches:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.result .result__matches:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.result .result__matches:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+/* RESULT-LOOSE / RESULT-WON */
+
+.result__won, .result__loose{
+  text-align: center;
+  text-transform: uppercase;
+  width: 15ch;
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap; 
+  margin: 20px auto; 
+  letter-spacing: .15em; 
+  animation: flashing-border 1.15s step-end infinite, printed-text 2s steps(31);
+  font-size: 25px;
+  white-space: nowrap;
+}
+.result__won{
+  color: rgb(16, 159, 32);
+}
+.result__loose{
+  color: rgb(255, 0, 0);
+}
+
+/* KEYFRAMES */
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+@keyframes flashing-border {
+  0% {  border-color: orange }
+  50% {  border-color: transparent }
+  100% {  border-color: orange }
+  to { width: 100% }
+}
+
+@keyframes printed-text {
+  from { width: 0 ; }
+}
